@@ -1,3 +1,6 @@
+;; This buffer is for textthat is not saved, and for Lisp evaluation.
+;; To create a file, visit it with C-x C-f and enter text in its buffer.
+
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
@@ -27,7 +30,7 @@
 
 (use-package which-key
   :ensure t
-  :init
+  :config
   (which-key-mode))
 
 (package-initialize)
@@ -36,7 +39,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(wheatgrass))
+ (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'catppuccin t)
  '(package-selected-packages '(org-bullets which-key which\.key use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
