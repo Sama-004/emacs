@@ -28,6 +28,42 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
+
+;; Auto completion
+(use-package auto-complete
+:ensure t
+:init
+(progn
+(ac-config-default)
+(global-auto-complete-mode t)))
+
+
+
+;; snippets and snippet expansion
+(use-package yasnippet
+:ensure t
+:init
+(yas-global-mode 1))
+
+
+;; tags for code navigation
+(use-package ggtags
+:ensure t
+:config
+(add-hook 'c-mode-common-hook
+(lambda ()
+(when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+(ggtags-mode 1))))
+)
+
+;; flycheck
+(use-package flycheck
+:ensure t
+:init
+(global-flycheck-mode t))
+
+
+
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;;(load-theme 'catppuccin t)
 (load-theme 'zenburn t)
@@ -42,8 +78,9 @@
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work 
- '(package-selected-packages '(org-bullets which-key which\.key use-package)))
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(ggtags yasnippet flycheck auto-complete org-bullets which-key which\.key use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
