@@ -29,8 +29,8 @@
 (menu-bar-mode -1)
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'catppuccin t)
-
+;;(load-theme 'catppuccin t)
+(load-theme 'zenburn t)
 
 (use-package which-key
   :ensure t
